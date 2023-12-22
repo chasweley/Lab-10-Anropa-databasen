@@ -1,5 +1,6 @@
 ﻿using Lab_10_Anropa_databasen.Data;
 using Lab_10_Anropa_databasen.Models;
+using Lab_10_Anropa_databasen.Utilities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab_10_Anropa_databasen.Utilities
+namespace Lab_10_Anropa_databasen
 {
     internal class UserFunctions
     {
@@ -37,11 +38,11 @@ namespace Lab_10_Anropa_databasen.Utilities
             while (true)
             {
                 Console.Write("Write the number for the customer you want more information on: ");
-                string input = Console.ReadLine(); 
+                string input = Console.ReadLine();
 
                 if (int.TryParse(input, out int chooseCustomer)) //Takes customer input and checks i able to conver to int, if yes, then converting to int
                 {
-                    var customer = listAllCustomerInfo[chooseCustomer-1];
+                    var customer = listAllCustomerInfo[chooseCustomer - 1];
                     //Prints all info on chosen customer
                     Console.WriteLine("\nAll customer information:");
                     Console.WriteLine($"Company name: {customer.CompanyName}" +
@@ -160,7 +161,7 @@ namespace Lab_10_Anropa_databasen.Utilities
                     {
                         maxNoCharacters[j] = allowedCharacters[random.Next(allowedCharacters.Length)];
                     }
-                    customerId = new String(maxNoCharacters); //Convert the created array to string
+                    customerId = new string(maxNoCharacters); //Convert the created array to string
                 }
 
                 existingCustomerId = context.Customers.Any(p => p.CustomerId.Equals(customerId));
@@ -186,5 +187,5 @@ namespace Lab_10_Anropa_databasen.Utilities
 
             Console.WriteLine("Success! New customer added.");
         }
-    }    
+    }
 }
